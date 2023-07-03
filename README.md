@@ -2,7 +2,7 @@
 
 This is a Zig package which provides a subset of XCode frameworks that are needed to compile games/applications for e.g. macOS.
 
-The package is small (~21MB), generally just what Mach engine itself needs for e.g. audio and graphics.
+The package is small (~23MB), generally just what Mach engine itself needs for e.g. audio and graphics.
 
 ## Updating
 
