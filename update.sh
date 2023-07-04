@@ -53,6 +53,15 @@ cp -R $frameworks/CoreVideo.framework ./Frameworks/CoreVideo.framework
 cp -R $frameworks/CoreText.framework ./Frameworks/CoreText.framework
 cp -R $frameworks/ColorSync.framework ./Frameworks/ColorSync.framework
 
+# GLFW dependencies
+cp -R $frameworks/Carbon.framework ./Frameworks/Carbon.framework
+cp -R $frameworks/Cocoa.framework ./Frameworks/Cocoa.framework
+cp -R $frameworks/AppKit.framework ./Frameworks/AppKit.framework
+cp -R $frameworks/CoreData.framework ./Frameworks/CoreData.framework
+cp -R $frameworks/CloudKit.framework ./Frameworks/CloudKit.framework
+cp -R $frameworks/CoreLocation.framework ./Frameworks/CoreLocation.framework
+cp -R $frameworks/Kernel.framework ./Frameworks/Kernel.framework
+
 # Remove unnecessary files
 find . | grep '\.swiftmodule' | xargs rm -rf
 rm -rf Frameworks/IOKit.framework/Versions/A/Headers/ndrvsupport
@@ -60,60 +69,27 @@ rm -rf Frameworks/IOKit.framework/Versions/A/Headers/pwr_mgt
 rm -rf Frameworks/IOKit.framework/Versions/A/Headers/scsi
 rm -rf Frameworks/IOKit.framework/Versions/A/Headers/firewire
 rm -rf Frameworks/IOKit.framework/Versions/A/Headers/storage
-rm -rf Frameworks/IOKit.framework/Versions/A/Headers/hid
 rm -rf Frameworks/IOKit.framework/Versions/A/Headers/usb
 
+# Trim large frameworks
 
+# 4.9M -> 1M
+cat ./Frameworks/Foundation.framework/Versions/C/Foundation.tbd | grep -v 'libswiftFoundation' > tmp
+mv tmp ./Frameworks/Foundation.framework/Versions/C/Foundation.tbd
 
-# rm -rf ./root ./MacOSX13.3.sdk
-# mkdir -p MacOSX13.3.sdk
-# cp -R /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/* ./MacOSX13.3.sdk/
-# cp -R /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/* ./MacOSX13.3.sdk/
+# 13M -> 368K
+find ./Frameworks/Kernel.framework -type f | grep -v IOKit/hidsystem | xargs rm -rf
 
-# # Remove unnecessary files (570M -> 112M)
-# rm -rf MacOSX13.3.sdk/usr/include/apache2
-# rm -rf MacOSX13.3.sdk/usr/share/man/
-# rm -rf MacOSX13.3.sdk/System/PrivateFrameworks/
-# rm -rf MacOSX13.3.sdk/System/Library/PrivateFrameworks
-# rm -rf MacOSX13.3.sdk/usr/lib/swift
-# rm -rf MacOSX13.3.sdk/System/iOSSupport/usr/lib/swift
-# rm -rf MacOSX13.3.sdk/System/Library/Perl/
+# 29M -> 28M
+find . | grep '\.apinotes' | xargs rm -rf
+find . | grep '\.r' | xargs rm -rf
+find . | grep '\.modulemap' | xargs rm -rf
 
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/MusicKit.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/TabularData.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/RealityFoundation.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/CreateML.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/SwiftUI.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/Ruby.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/Python.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/SwiftUI.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/Combine.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/Accelerate.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/WebKit.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/Python.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/RealityKit.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/AVFoundation.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/Intents.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/CoreTelephony.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/Quartz.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/OpenCL.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/CryptoKit.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/DriverKit.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/Tcl.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/Tk.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/IOBluetooth.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/DiscRecording.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/JavaScriptCore.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/HIDDriverKit.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/GameKit.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/SceneKit.framework
-# rm -rf MacOSX13.3.sdk/System/Library/Frameworks/WidgetKit.framework
+# 668K
+rm ./Frameworks/OpenGL.framework/Versions/A/Libraries/libLLVMContainer.tbd
 
-# mv MacOSX13.3.sdk root
+# 672K
+rm ./Frameworks/OpenGL.framework/Versions/A/Libraries/3425AMD/libLLVMContainer.tbd
 
-# # Remove reexported libraries section from all tbd files. These have absolute paths that zld would
-# # not be able to resolve unless sysroot was set.
-# # See https://github.com/hexops/mach/issues/108
-# go build ./strip-reexported.go 
-# find root/System -type f -name "*.tbd" -print0 | xargs -P128 -n1 -0 -- ./strip-reexported
-
+# 444K
+rm ./Frameworks/CloudKit.framework/Versions/A/CloudKit.tbd
