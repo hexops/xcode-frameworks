@@ -8,16 +8,17 @@ includes="$sdk/usr/include"
 libs="$sdk/usr/lib"
 
 rm -rf Frameworks/
-rm -rf include/
-rm -rf lib/
 
 mkdir -p ./Frameworks
 mkdir -p ./include
 mkdir -p ./lib
 
-# General includes, removing uncommon or useless ones
-cp -R $includes/ ./include
-rm -rf ./include/apache2
+# General includes
+mkdir -p include/libDER/
+cp $includes/libDER/DERItem.h ./include/libDER/
+cp $includes/libDER/libDER_config.h ./include/libDER/
+mkdir -p include/cups
+cp -R $includes/cups ./include/
 
 # General libraries
 mkdir -p lib/
