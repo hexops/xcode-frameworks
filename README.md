@@ -4,6 +4,8 @@ This is a Zig package which provides a subset of XCode frameworks that are neede
 
 The package is small (~23MB), generally just what Mach engine itself needs for e.g. audio and graphics.
 
+Note: Currently this repository cannot be used directly as a dependency, instead you can use [this workaround](https://github.com/hexops/xcode-frameworks-pkg).
+
 ## Updating
 
 To update this repository, run `./update.sh` on a macOS host machine with XCode installed followed by `./verify.sh` to verify the repository contents.
