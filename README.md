@@ -20,6 +20,10 @@ For supply chain security reasons (e.g. to confirm we made zero changes to the c
 
 If nothing is printed, there is no diff. Deleted files are ignored.
 
+## Issues
+
+Issues are tracked in the [main Mach repository](https://github.com/hexops/mach/issues?q=is%3Aissue+is%3Aopen+label%3Axcode-frameworks).
+
 ## License
 
 All files in this repository are distributed in an unmodified state,
