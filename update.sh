@@ -23,7 +23,7 @@ readonly libs="${sdk}/usr/lib"
 # Cosmetic. Debug using https://bashdb.sourceforge.net/ if there's issues.
 set -x
 
-# Remove prior output of "update.sh".
+# Remove prior output of the script you are currently inside.
 rm -rf "Frameworks/"
 
 mkdir -p "{./Frameworks, ./include, ./lib}"
@@ -102,7 +102,7 @@ find . | grep "\.modulemap" | xargs rm -rf
 # 668K
 rm "./Frameworks/OpenGL.framework/Versions/A/Libraries/libLLVMContainer.tbd"
 
-# 6"72K"
+# 672K
 rm "./Frameworks/OpenGL.framework/Versions/A/Libraries/3425AMD/libLLVMContainer.tbd"
 
 # 444K
