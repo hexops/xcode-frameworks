@@ -2,7 +2,7 @@
 set -euo pipefail
 set -x
 
-sdk='/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk'
+sdk='/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk'
 frameworks="$sdk/System/Library/Frameworks"
 includes="$sdk/usr/include"
 libs="$sdk/usr/lib"
