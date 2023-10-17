@@ -17,7 +17,7 @@ pub fn build(b: *std.Build) void {
 }
 
 pub fn addPaths(step: *std.build.CompileStep) void {
-    step.addFrameworkPath(.{ .path = sdkPath("/Frameworks") });
+    step.addSystemFrameworkPath(.{ .path = sdkPath("/Frameworks") });
     step.addSystemIncludePath(.{ .path = sdkPath("/include") });
     step.addLibraryPath(.{ .path = sdkPath("/lib") });
 }
