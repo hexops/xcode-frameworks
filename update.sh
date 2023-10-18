@@ -95,3 +95,50 @@ rm ./Frameworks/CloudKit.framework/Versions/A/CloudKit.tbd
 
 # Remove broken symlinks
 find . -type l ! -exec test -e {} \; -print | xargs rm
+
+# # Replace symlinks with their actual file contents
+# dir=Frameworks
+# tar -hcf tmp.tar $dir && rm -rf $dir && mkdir tmp && tar -xf tmp.tar
+# rm -rf tmp tmp.tar
+
+# dir=include
+# tar -hcf tmp.tar $dir && rm -rf $dir && mkdir tmp && tar -xf tmp.tar
+# rm -rf tmp tmp.tar
+
+# dir=lib
+# tar -hcf tmp.tar $dir && rm -rf $dir && mkdir tmp && tar -xf tmp.tar
+# rm -rf tmp tmp.tar
+
+# rm -r Frameworks/Security.framework/Headers
+# rm -r Frameworks/QuartzCore.framework/Headers
+# rm -r Frameworks/OpenGL.framework/Headers
+# rm -r Frameworks/Metal.framework/Headers
+# rm -r Frameworks/Kernel.framework/Headers
+# rm -r Frameworks/ImageIO.framework/Headers
+# rm -r Frameworks/IOSurface.framework/Headers
+# rm -r Frameworks/IOKit.framework/Headers
+# rm -r Frameworks/Foundation.framework/Headers
+# rm -r Frameworks/DiskArbitration.framework/Headers
+# rm -r Frameworks/CoreVideo.framework/Headers
+# rm -r Frameworks/CoreText.framework/Headers
+# rm -r Frameworks/CoreServices.framework/Headers
+# rm -r Frameworks/CoreLocation.framework/Headers
+# rm -r Frameworks/CoreImage.framework/Headers
+# rm -r Frameworks/CoreGraphics.framework/Headers
+# rm -r Frameworks/CoreFoundation.framework/Headers
+# rm -r Frameworks/CoreData.framework/Headers
+# rm -r Frameworks/CoreAudioTypes.framework/Headers
+# rm -r Frameworks/CoreAudio.framework/Headers
+# rm -r Frameworks/ColorSync.framework/Headers
+# rm -r Frameworks/Cocoa.framework/Headers
+# rm -r Frameworks/CloudKit.framework/Headers
+# rm -r Frameworks/Carbon.framework/Headers
+# rm -r Frameworks/CFNetwork.framework/Headers
+# rm -r Frameworks/AudioUnit.framework/Headers
+# rm -r Frameworks/AudioToolbox.framework/Headers
+# rm -r Frameworks/ApplicationServices.framework/Headers
+# rm -r Frameworks/AppKit.framework/Headers
+
+# # Now that /Versions/Current symlinks are realized, we no longer need the duplicate
+# find Frameworks | grep '/Versions/A/' | xargs rm -rf
+# find Frameworks | grep '/Versions/C/' | xargs rm -rf
