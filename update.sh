@@ -95,3 +95,20 @@ rm ./Frameworks/CloudKit.framework/Versions/A/CloudKit.tbd
 
 # Remove broken symlinks
 find . -type l ! -exec test -e {} \; -print | xargs rm
+
+# Replace symlinks with their actual file contents
+dir=Frameworks
+tar -hcf tmp.tar $dir && rm -rf $dir && mkdir tmp && tar -xf tmp.tar
+rm -rf tmp tmp.tar
+
+dir=include
+tar -hcf tmp.tar $dir && rm -rf $dir && mkdir tmp && tar -xf tmp.tar
+rm -rf tmp tmp.tar
+
+dir=lib
+tar -hcf tmp.tar $dir && rm -rf $dir && mkdir tmp && tar -xf tmp.tar
+rm -rf tmp tmp.tar
+
+# Now that /Versions/Current symlinks are realized, we no longer need the duplicate
+find Frameworks | grep '/Versions/A/' | xargs rm -rf
+find Frameworks | grep '/Versions/C/' | xargs rm -rf
