@@ -2,9 +2,9 @@
 
 This is a Zig package which provides a subset of XCode frameworks that are needed to compile games/applications for e.g. macOS.
 
-The package is small (~23MB), generally just what Mach engine itself needs for e.g. audio and graphics.
+The package is small (~102MB), generally just what Mach engine itself and a few other projects need for e.g. audio and graphics.
 
-Note: Currently this repository cannot be used directly as a dependency, instead you can use [this workaround](https://github.com/hexops/xcode-frameworks-pkg).
+All symlinks are realized to their actual file contents to improve compatibility with Windows, which has extremely poor symlink support.
 
 ## Updating
 
