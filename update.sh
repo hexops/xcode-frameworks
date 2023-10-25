@@ -2,7 +2,7 @@
 set -euo pipefail
 set -x
 
-sdk='/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk'
+sdk='/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk'
 frameworks="$sdk/System/Library/Frameworks"
 includes="$sdk/usr/include"
 libs="$sdk/usr/lib"
@@ -34,6 +34,7 @@ cp -R $frameworks/DiskArbitration.framework ./Frameworks/DiskArbitration.framewo
 cp -R $frameworks/CFNetwork.framework ./Frameworks/CFNetwork.framework
 cp -R $frameworks/ApplicationServices.framework ./Frameworks/ApplicationServices.framework
 cp -R $frameworks/ImageIO.framework ./Frameworks/ImageIO.framework
+cp -R $frameworks/Symbols.framework ./Frameworks/Symbols.framework
 
 # Audio frameworks
 cp -R $frameworks/AudioToolbox.framework ./Frameworks/AudioToolbox.framework
@@ -52,7 +53,7 @@ cp -R $frameworks/CoreVideo.framework ./Frameworks/CoreVideo.framework
 cp -R $frameworks/CoreText.framework ./Frameworks/CoreText.framework
 cp -R $frameworks/ColorSync.framework ./Frameworks/ColorSync.framework
 
-# GLFW dependencies
+# Input/Windowing frameworks & deps
 cp -R $frameworks/Carbon.framework ./Frameworks/Carbon.framework
 cp -R $frameworks/Cocoa.framework ./Frameworks/Cocoa.framework
 cp -R $frameworks/AppKit.framework ./Frameworks/AppKit.framework
