@@ -61,6 +61,7 @@ cp -R $frameworks/CoreData.framework ./Frameworks/CoreData.framework
 cp -R $frameworks/CloudKit.framework ./Frameworks/CloudKit.framework
 cp -R $frameworks/CoreLocation.framework ./Frameworks/CoreLocation.framework
 cp -R $frameworks/Kernel.framework ./Frameworks/Kernel.framework
+cp -R $frameworks/GameController.framework ./Frameworks/GameController.framework
 
 # Remove unnecessary files
 find . | grep '\.swiftmodule' | xargs rm -rf
