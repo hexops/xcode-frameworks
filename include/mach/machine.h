@@ -396,7 +396,10 @@ typedef integer_t       cpu_threadtype_t;
 #define CPUFAMILY_ARM_FIRESTORM_ICESTORM 0x1b588bb3
 #define CPUFAMILY_ARM_BLIZZARD_AVALANCHE 0xda33d83d
 #define CPUFAMILY_ARM_EVEREST_SAWTOOTH  0x8765edea
+#define CPUFAMILY_ARM_IBIZA             0xfa33415e
+#define CPUFAMILY_ARM_PALMA 0x72015832
 #define CPUFAMILY_ARM_COLL 0x2876f5b5
+#define CPUFAMILY_ARM_LOBOS 0x5f4dea93
 
 /* Described in rdar://64125549 */
 #define CPUSUBFAMILY_UNKNOWN            0
