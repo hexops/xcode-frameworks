@@ -6,7 +6,7 @@ pub fn build(b: *std.Build) void {
 
     const lib = b.addStaticLibrary(.{
         .name = "xcode-frameworks",
-        .root_source_file = .{ .path = b.addWriteFiles().add("empty.c", "") },
+        .root_source_file = b.addWriteFiles().add("empty.c", ""),
         .target = target,
         .optimize = optimize,
     });
@@ -16,7 +16,7 @@ pub fn build(b: *std.Build) void {
     b.installArtifact(lib);
 }
 
-pub fn addPaths(step: *std.build.CompileStep) void {
+pub fn addPaths(step: *std.Build.Step.Compile) void {
     step.addSystemFrameworkPath(.{ .path = sdkPath("/Frameworks") });
     step.addSystemIncludePath(.{ .path = sdkPath("/include") });
     step.addLibraryPath(.{ .path = sdkPath("/lib") });
