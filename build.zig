@@ -22,7 +22,7 @@ pub fn addPaths(step: *std.Build.Step.Compile) void {
     step.addLibraryPath(.{ .path = sdkPath("/lib") });
 }
 
-pub fn addPaths2(m: *std.Build.Module) void {
+pub fn addPathsModule(m: *std.Build.Module) void {
     m.addSystemFrameworkPath(.{ .path = sdkPath("/Frameworks") });
     m.addSystemIncludePath(.{ .path = sdkPath("/include") });
     m.addLibraryPath(.{ .path = sdkPath("/lib") });
