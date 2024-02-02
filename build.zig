@@ -10,20 +10,13 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    addPaths(lib); // just for testing
-    addPathsToModule(&lib.root_module); // just for testing
+    addPaths(&lib.root_module); // just for testing
     lib.linkLibC();
     lib.installHeadersDirectory("include", ".");
     b.installArtifact(lib);
 }
 
-pub fn addPaths(step: *std.Build.Step.Compile) void {
-    step.addSystemFrameworkPath(.{ .path = sdkPath("/Frameworks") });
-    step.addSystemIncludePath(.{ .path = sdkPath("/include") });
-    step.addLibraryPath(.{ .path = sdkPath("/lib") });
-}
-
-pub fn addPathsToModule(mod: *std.Build.Module) void {
+pub fn addPaths(mod: *std.Build.Module) void {
     mod.addSystemFrameworkPath(.{ .path = sdkPath("/Frameworks") });
     mod.addSystemIncludePath(.{ .path = sdkPath("/include") });
     mod.addLibraryPath(.{ .path = sdkPath("/lib") });
