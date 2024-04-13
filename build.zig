@@ -12,7 +12,7 @@ pub fn build(b: *std.Build) void {
     });
     addPaths(&lib.root_module); // just for testing
     lib.linkLibC();
-    lib.installHeadersDirectory("include", ".");
+    lib.installHeadersDirectory(b.path("include"), ".", .{});
     b.installArtifact(lib);
 }
 
