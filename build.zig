@@ -12,14 +12,14 @@ pub fn build(b: *std.Build) void {
     });
     addPaths(&lib.root_module); // just for testing
     lib.linkLibC();
-    lib.installHeadersDirectory("include", ".");
+    lib.installHeadersDirectory(b.path("include"), ".", .{});
     b.installArtifact(lib);
 }
 
 pub fn addPaths(mod: *std.Build.Module) void {
-    mod.addSystemFrameworkPath(.{ .path = sdkPath("/Frameworks") });
-    mod.addSystemIncludePath(.{ .path = sdkPath("/include") });
-    mod.addLibraryPath(.{ .path = sdkPath("/lib") });
+    mod.addSystemFrameworkPath(.{ .cwd_relative = sdkPath("/Frameworks") });
+    mod.addSystemIncludePath(.{ .cwd_relative = sdkPath("/include") });
+    mod.addLibraryPath(.{ .cwd_relative = sdkPath("/lib") });
 }
 
 fn sdkPath(comptime suffix: []const u8) []const u8 {
