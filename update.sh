@@ -42,6 +42,7 @@ cp -R $frameworks/CoreAudio.framework ./Frameworks/CoreAudio.framework
 cp -R $frameworks/CoreAudioTypes.framework ./Frameworks/CoreAudioTypes.framework
 cp -R $frameworks/AudioUnit.framework ./Frameworks/AudioUnit.framework
 cp -R $frameworks/AVFAudio.framework ./Frameworks/AVFAudio.framework
+cp -R $frameworks/CoreMIDI.framework ./Frameworks/CoreMIDI.framework
 
 # Graphics frameworks
 cp -R $frameworks/Metal.framework ./Frameworks/Metal.framework
