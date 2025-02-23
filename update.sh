@@ -54,6 +54,7 @@ cp -R $frameworks/CoreImage.framework ./Frameworks/CoreImage.framework
 cp -R $frameworks/CoreVideo.framework ./Frameworks/CoreVideo.framework
 cp -R $frameworks/CoreText.framework ./Frameworks/CoreText.framework
 cp -R $frameworks/ColorSync.framework ./Frameworks/ColorSync.framework
+cp -R $frameworks/MetalKit.framework ./Frameworks/MetalKit.framework
 
 # Input/Windowing frameworks & deps
 cp -R $frameworks/Carbon.framework ./Frameworks/Carbon.framework
